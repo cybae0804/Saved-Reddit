@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import snoowrap from 'snoowrap';
+import qs from 'query-string';
+import { withRouter } from 'react-router-dom';
+import cred from './credentials';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    const { code } = qs.parse(window.location.search);
+    
+    if (code) {
+      this.validateCode(code);
+    }
+  }
+
+  initiateOAuth() {
+    const authUrl = snoowrap.getAuthUrl({
+      clientId: cred.clientId,
+      scope: ['history'],
+      redirectUri: cred.redirectUri,
+      permanent: false,
+    });
+
+    window.location = authUrl;
+  }
+
+  validateCode = async (code) => {
+    const instance = await snoowrap.fromAuthCode({
+      code,
+      userAgent: cred.userAgent,
+      clientId: cred.clientId,
+      redirectUri: cred.redirectUri,
+    });
+
+    const saved = await instance.getMe().getSavedContent();
+    console.log('saved', saved);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        Hello World
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
