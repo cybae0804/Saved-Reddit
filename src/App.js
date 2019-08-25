@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import snoowrap from 'snoowrap';
+import { Button } from 'semantic-ui-react';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 import cred from './credentials';
@@ -39,7 +40,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Hello World
+        <Button onClick={this.initiateOAuth}>
+          Authenticate
+        </Button>
       </div>
     );
   }
