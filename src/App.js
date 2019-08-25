@@ -17,7 +17,7 @@ class App extends Component {
   initiateOAuth() {
     const authUrl = snoowrap.getAuthUrl({
       clientId: cred.clientId,
-      scope: ['history'],
+      scope: ['history', 'identity'],
       redirectUri: cred.redirectUri,
       permanent: false,
     });
@@ -34,7 +34,7 @@ class App extends Component {
     });
 
     const saved = await instance.getMe().getSavedContent();
-    console.log('saved', saved);
+    console.log(saved);
   }
 
   render() {
