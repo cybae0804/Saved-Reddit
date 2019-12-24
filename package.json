@@ -4,21 +4,23 @@
   "private": true,
   "dependencies": {
     "lodash": "^4.17.15",
+    "mobx": "^5.15.1",
+    "mobx-react": "^6.1.4",
     "moment": "^2.24.0",
     "query-string": "^6.8.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
+    "react-scripts": "^3.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.0",
     "snoowrap": "^1.19.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,5 +36,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "babel-preset-airbnb": "^4.4.0",
+    "customize-cra": "^0.9.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "react-app-rewired": "^2.1.5"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
