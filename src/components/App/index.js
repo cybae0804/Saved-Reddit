@@ -17,9 +17,10 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.store.reddit.savedPosts);
     return (
       <div className="App">
-        <Button onClick={this.initiateOAuth}>
+        <Button onClick={this.props.store.reddit.initiateOAuth}>
           Authenticate
         </Button>
       </div>

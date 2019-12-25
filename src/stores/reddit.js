@@ -14,7 +14,6 @@ class Reddit {
       clientId: cred.clientId,
       scope: ['history', 'identity'],
       redirectUri: cred.redirectUri,
-      permanent: false,
     });
 
     window.location = authUrl;
@@ -29,7 +28,7 @@ class Reddit {
       redirectUri: cred.redirectUri,
     });
 
-    this.savedPosts = await instance.getMe().getSavedContent();
+    this.savedPosts = await instance.getMe().getSavedContent().fetchAll();
   }
 }
 
