@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
-import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
@@ -9,14 +8,6 @@ import { observer, inject } from 'mobx-react';
 @withRouter
 @observer
 class App extends Component {
-  componentDidMount() {
-    const { code } = qs.parse(window.location.search);
-
-    if (code) {
-      this.props.store.reddit.validateCode(code);
-    }
-  }
-
   render() {
     console.log(toJS(this.props.store.reddit.savedPosts));
     return (
