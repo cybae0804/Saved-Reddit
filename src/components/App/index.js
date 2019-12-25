@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import { Button, Container } from 'semantic-ui-react';
 import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
+import NavBar from 'components/NavBar';
+import Landing from 'components/Landing';
+
 @inject('store')
-@withRouter
 @observer
 class App extends Component {
   render() {
     console.log(toJS(this.props.store.reddit.savedPosts));
     return (
       <div className="App">
-        <Button onClick={this.props.store.reddit.initiateOAuth}>
-          Authenticate
-        </Button>
+        <NavBar />
+        <Landing />
       </div>
     );
   }

@@ -21,14 +21,13 @@ class Reddit {
   @action
   authenticateAndLoadPosts = async () => {
     const { code } = qs.parse(window.location.search);
+    const refreshToken = localStorage.getItem('refreshToken');
+    const accessToken = localStorage.getItem('accessToken');
 
     if (code) {
       await this.validateCode(code);
       window.history.replaceState({}, '', cred.redirectUri);
-    } else {
-      const refreshToken = localStorage.getItem('refreshToken');
-      const accessToken = localStorage.getItem('accessToken');
-
+    } else if (refreshToken || accessToken) {
       await this.validateToken(refreshToken, accessToken);
     }
 
@@ -60,6 +59,7 @@ class Reddit {
   @action
   validateToken = async (refreshToken, accessToken) => {
     try {
+      this.loading = true;
       // eslint-disable-next-line new-cap
       this.instance = await new snoowrap({
         refreshToken,
