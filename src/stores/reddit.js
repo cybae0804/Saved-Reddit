@@ -23,13 +23,13 @@ class Reddit {
     const { code } = qs.parse(window.location.search);
 
     if (code) {
-      await this.props.store.reddit.validateCode(code);
+      await this.validateCode(code);
       localStorage.setItem('code', code);
       window.location.replace(cred.redirectUri);
     } else {
       const savedCode = localStorage.getItem('code');
 
-      if (savedCode) await this.props.store.reddit.validateCode(savedCode);
+      if (savedCode) await this.validateCode(savedCode);
     }
 
     if (this.instance) await this.getAllSavedContent();
