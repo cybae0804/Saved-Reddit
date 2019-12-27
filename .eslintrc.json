@@ -2,6 +2,7 @@
   "parser": "babel-eslint",
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"],
   "rules": {
+    "camelcase": "off",
     "import/no-named-as-default": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off",
