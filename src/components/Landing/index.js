@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Header, Button, Segment, Icon, Image,
+  Header, Button, Icon, Image,
 } from 'semantic-ui-react';
 import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
@@ -11,16 +11,12 @@ const Landing = (props) => {
   console.log(toJS(props.store.reddit.savedPosts));
 
   return (
-    <Segment
-      padded="very"
-      size="massive"
-      color="blue"
-      inverted
-      basic
+    <div
       style={{
-        margin: 0,
-        minHeight: 'calc(100vh - 40px)',
-        padding: '10rem',
+        position: 'absolute',
+        left: '50%',
+        top: '40%',
+        transform: 'translate(-50%, -50%)',
       }}
     >
       <Image
@@ -28,6 +24,7 @@ const Landing = (props) => {
         size="large"
         centered
       />
+
       <Header
         size="huge"
         textAlign="center"
@@ -42,7 +39,7 @@ const Landing = (props) => {
           </Button>
         </Header.Subheader>
       </Header>
-    </Segment>);
+    </div>);
 };
 
 export default inject('store')(observer(Landing));
