@@ -20,6 +20,8 @@ class Reddit {
 
   @action
   authenticateAndLoadPosts = async () => {
+    this.loading = true;
+
     const { code } = qs.parse(window.location.search);
     const refreshToken = localStorage.getItem('refreshToken');
     const accessToken = localStorage.getItem('accessToken');
@@ -43,7 +45,6 @@ class Reddit {
   @action
   validateCode = async (code) => {
     try {
-      this.loading = true;
       this.instance = await snoowrap.fromAuthCode({
         code,
         userAgent: cred.userAgent,
@@ -59,7 +60,6 @@ class Reddit {
   @action
   validateToken = async (refreshToken, accessToken) => {
     try {
-      this.loading = true;
       // eslint-disable-next-line new-cap
       this.instance = await new snoowrap({
         refreshToken,
@@ -85,9 +85,7 @@ class Reddit {
 
   @action
   getAllSavedContent = async () => {
-    this.loading = true;
     this.savedPosts = await this.instance.getMe().getSavedContent().fetchAll();
-    this.loading = false;
   }
 }
 
