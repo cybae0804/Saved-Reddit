@@ -21,7 +21,7 @@ const Posts = (props) => {
       {
         props.store.reddit.savedPosts.map((post) => (
         <Item key={post.id}>
-          <Item.Image size="tiny" src={post?.preview?.images?.[0]?.source?.url} />
+          <Item.Image as="img" loading="lazy" size="tiny" src={post?.preview?.images?.[0]?.source?.url} />
 
           <Item.Content>
             <Item.Header>{post?.title ?? post?.link_title}</Item.Header>
