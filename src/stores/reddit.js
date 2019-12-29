@@ -10,7 +10,7 @@ class Reddit {
     this.authenticateAndLoadPosts();
   }
 
-  @observable savedPosts = [' '];
+  @observable savedPosts = [];
 
   @observable instance = null;
 
