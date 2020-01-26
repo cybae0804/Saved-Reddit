@@ -10,37 +10,24 @@ class Reddit {
     this.authenticateAndLoadPosts();
   }
 
-  @observable savedPosts = [{
-    title: 'hello',
-    link_title: 'whater',
-    body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
-    score: 12345,
-    num_comments: 1234,
-    preview: {
-      images: [
-        {
-          source: {
-            url: 'https://external-preview.redd.it/aV7ayNgTuyjkD6CUwY-x0sKjQUMy1hb0jwCmoWQWUTY.jpg?auto=webp&s=7fe2c323a2d0ecfb106a89ef7726c6d94e838b8f'
-          }
-        }
-      ]
-    }
-  }, {
-    title: 'hello',
-    link_title: 'whater',
-    num_comments: 1234,
-    score: 12345,
-    body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
-    preview: {
-      images: [
-        {
-          source: {
-            url: 'https://external-preview.redd.it/aV7ayNgTuyjkD6CUwY-x0sKjQUMy1hb0jwCmoWQWUTY.jpg?auto=webp&s=7fe2c323a2d0ecfb106a89ef7726c6d94e838b8f'
-          }
-        }
-      ]
-    }
-  }];
+  @observable savedPosts = [
+    // {
+    //   title: 'hello',
+    //   link_title: 'whater',
+    //   body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
+    //   score: 12345,
+    //   num_comments: 1234,
+    //   preview: {
+    //     images: [
+    //       {
+    //         source: {
+    //           url: 'https://external-preview.redd.it/aV7ayNgTuyjkD6CUwY-x0sKjQUMy1hb0jwCmoWQWUTY.jpg?auto=webp&s=7fe2c323a2d0ecfb106a89ef7726c6d94e838b8f',
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
+  ];
 
   @observable instance = null;
 

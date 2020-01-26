@@ -2,7 +2,7 @@ import React from 'react';
 import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import {
-  Container, Input, Segment, Image, Header, Label, Icon, Grid,
+  Container, Input, Segment, Image, Header, Label, Grid,
 } from 'semantic-ui-react';
 
 const Posts = (props) => {
@@ -23,11 +23,19 @@ const Posts = (props) => {
         const title = post?.title ?? post?.link_title ?? '';
         const commentsCount = post?.num_comments ?? 0;
         const score = post?.score ?? 0;
+        const nsfw = post?.over_18 ?? false;
         const body = post?.body ?? '';
-        const nsfw = post.over_18;
+
+        const url = post?.url ?? null;
+        const commentsLink = `https://www.reddit.com${post.permalink}`;
 
         return (
-          <Segment key={post.id} raised color={nsfw ? 'red' : null}>
+          <Segment
+            key={post.id}
+            raised
+            color={nsfw ? 'red' : null}
+            onClick={() => window.open(url, '_blank')}
+          >
             <Grid>
               {preview && (
                 <Grid.Column width={2}>
@@ -35,12 +43,19 @@ const Posts = (props) => {
                 </Grid.Column>
               )}
 
-              <Grid.Column width={preview ? 14 : 16}>
+              <Grid.Column width={preview ? 14 : 16} style={{ paddingLeft: 0 }}>
                 <Grid.Row>
                   <Header content={title} />
                 </Grid.Row>
                 <Grid.Row>
-                  <Label icon='comments' content={commentsCount} size="mini" />
+                  <Label
+                    icon='comments'
+                    content={commentsCount}
+                    size="mini"
+                    as="a"
+                    target="_blank"
+                    href={commentsLink}
+                  />
                   <Label icon='arrow up' content={score} size="mini" />
                 </Grid.Row>
                 <Grid.Row>
