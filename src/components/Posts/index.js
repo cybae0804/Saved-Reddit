@@ -34,16 +34,15 @@ const Posts = (props) => {
             key={post.id}
             raised
             color={nsfw ? 'red' : null}
-            onClick={() => window.open(url, '_blank')}
           >
             <Grid>
               {preview && (
-                <Grid.Column width={2}>
+                <Grid.Column width={2} style={{ paddingRight: 0 }}>
                   <Image src={preview} size="tiny" rounded floated="left" />
                 </Grid.Column>
               )}
 
-              <Grid.Column width={preview ? 14 : 16} style={{ paddingLeft: 0 }}>
+              <Grid.Column width={preview ? 14 : 16}>
                 <Grid.Row>
                   <Header content={title} />
                 </Grid.Row>
@@ -56,7 +55,14 @@ const Posts = (props) => {
                     target="_blank"
                     href={commentsLink}
                   />
-                  <Label icon='arrow up' content={score} size="mini" />
+                  <Label
+                    icon='arrow up'
+                    content={score}
+                    size="mini"
+                    as="a"
+                    target="_blank"
+                    href={url}
+                  />
                 </Grid.Row>
                 <Grid.Row>
                   {body}
