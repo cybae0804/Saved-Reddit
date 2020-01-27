@@ -2,7 +2,7 @@ import React from 'react';
 import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import {
-  Container, Input, Segment, Image, Header, Label, Grid, Divider,
+  Container, Input, Segment, Image, Header, Label, Divider,
 } from 'semantic-ui-react';
 
 const Posts = (props) => {
@@ -35,57 +35,53 @@ const Posts = (props) => {
             key={post.id}
             raised
             color={nsfw ? 'red' : null}
+            style={{ display: 'flex' }}
           >
-            <Grid>
-              {preview && (
-                <Grid.Column width={2}>
-                  <Image
-                    src={preview}
-                    size="tiny"
-                    floated="left"
-                    rounded
-                  />
-                </Grid.Column>
-              )}
-
-              <Grid.Column width={preview ? 14 : 16} style={{ paddingLeft: preview ? 0 : null }}>
-                <Grid.Row>
-                  <Header
-                    content={title}
-                    as="a"
-                    target="_blank"
-                    href={url}
-                  />
-                </Grid.Row>
-                <Grid.Row>
-                  <Label
-                    icon='comments'
-                    content={commentsCount}
-                    size="mini"
-                    as="a"
-                    target="_blank"
-                    href={commentsLink}
-                  />
-                  <Label
-                    icon='arrow up'
-                    content={score}
-                    size="mini"
-                  />
-                  <Label
-                    icon='reddit alien'
-                    content={subreddit}
-                    size="mini"
-                    as="a"
-                    target="_blank"
-                    href={`https://www.reddit.com/${subreddit}`}
-                  />
-                </Grid.Row>
-                <Divider hidden style={{ margin: '0.5rem' }} />
-                <Grid.Row>
-                  {body}
-                </Grid.Row>
-              </Grid.Column>
-            </Grid>
+            {
+              preview
+              && (<div style={{ maxWidth: '5rem', marginRight: '1rem' }}>
+                <Image
+                  src={preview}
+                  size="tiny"
+                  rounded
+                />
+              </div>)
+            }
+            <div>
+              <Header
+                content={title}
+                as="a"
+                target="_blank"
+                href={url}
+              />
+              <div>
+                <Label
+                  icon='comments'
+                  content={commentsCount}
+                  size="mini"
+                  as="a"
+                  target="_blank"
+                  href={commentsLink}
+                />
+                <Label
+                  icon='arrow up'
+                  content={score}
+                  size="mini"
+                />
+                <Label
+                  icon='reddit alien'
+                  content={subreddit}
+                  size="mini"
+                  as="a"
+                  target="_blank"
+                  href={`https://www.reddit.com/${subreddit}`}
+                />
+              </div>
+              <Divider hidden style={{ margin: '0.5rem' }} />
+              <div>
+                {body}
+              </div>
+            </div>
           </Segment>
         );
       })
