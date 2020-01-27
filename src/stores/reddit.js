@@ -12,11 +12,14 @@ class Reddit {
 
   @observable savedPosts = [
     // {
+    //   id: 123,
     //   title: 'hello',
     //   link_title: 'whater',
+    //   url: 'https://test.com',
     //   body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
     //   score: 12345,
     //   num_comments: 1234,
+    //   subreddit_name_prefixed: 'r/todayIlearned',
     //   preview: {
     //     images: [
     //       {

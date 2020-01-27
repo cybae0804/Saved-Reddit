@@ -2,7 +2,7 @@ import React from 'react';
 import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import {
-  Container, Input, Segment, Image, Header, Label, Grid,
+  Container, Input, Segment, Image, Header, Label, Grid, Divider,
 } from 'semantic-ui-react';
 
 const Posts = (props) => {
@@ -28,6 +28,7 @@ const Posts = (props) => {
 
         const url = post?.url ?? null;
         const commentsLink = `https://www.reddit.com${post.permalink}`;
+        const subreddit = post?.subreddit_name_prefixed;
 
         return (
           <Segment
@@ -37,14 +38,24 @@ const Posts = (props) => {
           >
             <Grid>
               {preview && (
-                <Grid.Column width={2} style={{ paddingRight: 0 }}>
-                  <Image src={preview} size="tiny" rounded floated="left" />
+                <Grid.Column width={2}>
+                  <Image
+                    src={preview}
+                    size="tiny"
+                    floated="left"
+                    rounded
+                  />
                 </Grid.Column>
               )}
 
-              <Grid.Column width={preview ? 14 : 16}>
+              <Grid.Column width={preview ? 14 : 16} style={{ paddingLeft: preview ? 0 : null }}>
                 <Grid.Row>
-                  <Header content={title} />
+                  <Header
+                    content={title}
+                    as="a"
+                    target="_blank"
+                    href={url}
+                  />
                 </Grid.Row>
                 <Grid.Row>
                   <Label
@@ -59,11 +70,17 @@ const Posts = (props) => {
                     icon='arrow up'
                     content={score}
                     size="mini"
+                  />
+                  <Label
+                    icon='reddit alien'
+                    content={subreddit}
+                    size="mini"
                     as="a"
                     target="_blank"
-                    href={url}
+                    href={`https://www.reddit.com/${subreddit}`}
                   />
                 </Grid.Row>
+                <Divider hidden style={{ margin: '0.5rem' }} />
                 <Grid.Row>
                   {body}
                 </Grid.Row>
