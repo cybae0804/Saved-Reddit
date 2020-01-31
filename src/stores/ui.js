@@ -19,9 +19,9 @@ class UI {
         }
 
         if (this.searchByContent) {
-          if (!post?.title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
-          if (!post?.link_title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
-          if (!post?.body?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
+          if (post?.title && !post?.title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
+          if (post?.link_title && !post?.link_title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
+          if (post?.body && !post?.body?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
         }
 
         return true;
