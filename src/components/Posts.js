@@ -39,6 +39,9 @@ const Posts = (props) => {
               src={preview}
               size="tiny"
               rounded
+              as="a"
+              target="_blank"
+              href={url}
             />
           </div>)
         }

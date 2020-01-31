@@ -19,11 +19,9 @@ class UI {
         }
 
         if (this.searchByContent) {
-          if (
-            !post?.title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())
-            || !post?.link_title?.includes(this.searchByContent?.toLowerCase())
-            || !post?.body?.includes(this.searchByContent?.toLowerCase())
-          ) return false;
+          if (!post?.title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
+          if (!post?.link_title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
+          if (!post?.body?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return false;
         }
 
         return true;
