@@ -89,6 +89,9 @@ const Posts = (props) => {
           placeholder='Search...'
           icon='search'
           style={{ marginBottom: '2rem' }}
+
+          value={props.store.ui.searchByContent}
+          onChange={(e, { value }) => props.store.ui.setSearchByContent(value)}
         />
 
         <Ref innerRef={ref}>
@@ -102,7 +105,7 @@ const Posts = (props) => {
             }
 
             <Rail position='right'>
-              <Sticky context={ref.current}>
+              <Sticky context={ref}>
                 <SideMenu />
               </Sticky>
             </Rail>
