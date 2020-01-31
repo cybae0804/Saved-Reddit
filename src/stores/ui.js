@@ -15,22 +15,22 @@ class UI {
     return this.rootStore.reddit.savedPosts
       .filter((post) => {
         if (this.searchBySubreddit) {
-          if (!post.subreddit_name_prefixed.includes(this.searchBySubreddit)) return false;
+          if (!post?.subreddit_name_prefixed?.toLowerCase()?.includes(this.searchBySubreddit)) return false;
         }
 
         if (this.searchByContent) {
           if (
-            !post.title.includes(this.searchByContent)
-            || !post.link_title.includes(this.searchByContent)
-            || !post.body.includes(this.searchByContent)
+            !post?.title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())
+            || !post?.link_title?.includes(this.searchByContent?.toLowerCase())
+            || !post?.body?.includes(this.searchByContent?.toLowerCase())
           ) return false;
         }
 
         return true;
       })
       .sort((a, b) => {
-        if (this.sortBy === 'Recent') return 0;
         if (this.sortBy === 'Score') return b.score - a.score;
+        return 0;
       });
   }
 
