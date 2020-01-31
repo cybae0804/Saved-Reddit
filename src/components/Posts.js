@@ -93,7 +93,7 @@ const Posts = (props) => {
           icon='search'
           style={{ marginBottom: '2rem' }}
 
-          value={props.store.ui.searchByContent}
+          value={props.store.ui.searchByContent || ''}
           onChange={(e, { value }) => props.store.ui.setSearchByContent(value)}
         />
 
