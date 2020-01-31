@@ -11,25 +11,63 @@ class Reddit {
   }
 
   @observable savedPosts = [
-    {
-      id: 123,
-      title: 'hello',
-      link_title: 'whater',
-      url: 'https://test.com',
-      body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
-      score: 12345,
-      num_comments: 1234,
-      subreddit_name_prefixed: 'r/todayIlearned',
-      preview: {
-        images: [
-          {
-            source: {
-              url: 'https://external-preview.redd.it/aV7ayNgTuyjkD6CUwY-x0sKjQUMy1hb0jwCmoWQWUTY.jpg?auto=webp&s=7fe2c323a2d0ecfb106a89ef7726c6d94e838b8f',
-            },
-          },
-        ],
-      },
-    },
+    // {
+    //   id: 123,
+    //   title: 'hello, 12345',
+    //   link_title: 'whater',
+    //   url: 'https://test.com',
+    //   body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
+    //   score: 12345,
+    //   num_comments: 1234,
+    //   subreddit_name_prefixed: 'r/todayIlearned',
+    //   preview: {
+    //     images: [
+    //       {
+    //         source: {
+    //           url: 'https://external-preview.redd.it/aV7ayNgTuyjkD6CUwY-x0sKjQUMy1hb0jwCmoWQWUTY.jpg?auto=webp&s=7fe2c323a2d0ecfb106a89ef7726c6d94e838b8f',
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
+    // {
+    //   id: 123,
+    //   title: 'hello, 123',
+    //   link_title: 'whater',
+    //   url: 'https://test.com',
+    //   body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
+    //   score: 123,
+    //   num_comments: 1234,
+    //   subreddit_name_prefixed: 'r/todayIlearned',
+    //   preview: {
+    //     images: [
+    //       {
+    //         source: {
+    //           url: 'https://external-preview.redd.it/aV7ayNgTuyjkD6CUwY-x0sKjQUMy1hb0jwCmoWQWUTY.jpg?auto=webp&s=7fe2c323a2d0ecfb106a89ef7726c6d94e838b8f',
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
+    // {
+    //   id: 123,
+    //   title: 'hello, 2345',
+    //   link_title: 'whater',
+    //   url: 'https://test.com',
+    //   body: 'adslkfjlkzjcvklzcjxvlkjasdfoiajwefli',
+    //   score: 2345,
+    //   num_comments: 1234,
+    //   subreddit_name_prefixed: 'r/todayIlearned',
+    //   preview: {
+    //     images: [
+    //       {
+    //         source: {
+    //           url: 'https://external-preview.redd.it/aV7ayNgTuyjkD6CUwY-x0sKjQUMy1hb0jwCmoWQWUTY.jpg?auto=webp&s=7fe2c323a2d0ecfb106a89ef7726c6d94e838b8f',
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
   ];
 
   @observable instance = null;

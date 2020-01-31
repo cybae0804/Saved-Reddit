@@ -3,17 +3,17 @@ import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import {
   Container, Input, Segment, Image, Header, Label, Divider,
-  Rail, Ref, Sticky,
+  Rail, Ref, Sticky, Icon,
 } from 'semantic-ui-react';
 
 import SideMenu from './SideMenu';
 
 const Posts = (props) => {
-  console.log(toJS(props.store.reddit.savedPosts));
+  console.log(toJS(props.store.ui.resultingPosts));
 
   const ref = useRef(null);
 
-  const posts = props.store.reddit.savedPosts.map((post) => {
+  const posts = props.store.ui.resultingPosts.map((post) => {
     const preview = post?.preview?.images?.[0]?.source?.url;
     const title = post?.title ?? post?.link_title ?? '';
     const commentsCount = post?.num_comments ?? 0;
@@ -93,7 +93,13 @@ const Posts = (props) => {
 
         <Ref innerRef={ref}>
           <Segment basic style={{ padding: 0 }}>
-            {posts}
+            {
+              props.store.ui.resultingPosts.length
+                ? posts
+                : <Header as='h2' textAlign="center" block>
+                    No posts found... :(
+                  </Header>
+            }
 
             <Rail position='right'>
               <Sticky context={ref.current}>
