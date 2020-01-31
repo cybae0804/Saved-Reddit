@@ -1,15 +1,15 @@
 import React, { useRef } from 'react';
-import { toJS } from 'mobx';
+// import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import {
   Container, Input, Segment, Image, Header, Label, Divider,
-  Rail, Ref, Sticky, Icon,
+  Rail, Ref, Sticky,
 } from 'semantic-ui-react';
 
 import SideMenu from './SideMenu';
 
 const Posts = (props) => {
-  console.log(toJS(props.store.ui.resultingPosts));
+  // console.log(toJS(props.store.ui.resultingPosts));
 
   const ref = useRef(null);
 
