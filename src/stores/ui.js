@@ -22,6 +22,8 @@ class UI {
           if (post?.title && post?.title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return true;
           if (post?.link_title && post?.link_title?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return true;
           if (post?.body && post?.body?.toLowerCase()?.includes(this.searchByContent?.toLowerCase())) return true;
+
+          return false;
         }
 
         return true;
