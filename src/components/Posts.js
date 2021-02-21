@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import { observer, inject } from 'mobx-react';
 import {
   Container, Input, Segment, Image, Header, Label, Divider,
-  Rail, Ref, Sticky,
+  Rail, Ref, Sticky, Button, Icon,
 } from 'semantic-ui-react';
 
 import SideMenu from './SideMenu';
@@ -45,7 +45,7 @@ const Posts = (props) => {
             />
           </div>)
         }
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 1 auto' }}>
           <Header
             content={title}
             as="a"
@@ -79,6 +79,17 @@ const Posts = (props) => {
           <div>
             {body}
           </div>
+        </div>
+
+        <div>
+          <Button
+            icon
+            basic
+            size='small'
+            onClick={() => props.store.reddit.unsavePost(post.name)}
+          >
+            <Icon name='x' />
+          </Button>
         </div>
       </Segment>
     );

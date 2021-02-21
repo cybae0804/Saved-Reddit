@@ -134,7 +134,7 @@ class Reddit {
   initiateOAuth = () => {
     const authUrl = snoowrap.getAuthUrl({
       clientId: cred.clientId,
-      scope: ['history', 'identity'],
+      scope: ['history', 'identity', 'save'],
       redirectUri: cred.redirectUri,
     });
 
@@ -144,6 +144,17 @@ class Reddit {
   @action
   getAllSavedContent = async () => {
     this.savedPosts = await this.instance.getMe().getSavedContent().fetchAll();
+  }
+
+  @action
+  unsavePost = async (name) => {
+    try {
+      if (name.startsWith('t1_')) await this.instance.getComment(name).unsave();
+      else if (name.startsWith('t3_')) await this.instance.getSubmission(name).unsave();
+      this.savedPosts = this.savedPosts.filter((post) => post.name !== name);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
 
